@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera Access Demo</title>
+</head>
+<body>
+    <video id="video" width="300" height="200" autoplay></video>
+    <script>
+        // ক্যামেরা অ্যাক্সেসের জন্য WebRTC API ব্যবহার করা হচ্ছে
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                var video = document.getElementById('video');
+                video.srcObject = stream;
+                alert("ক্যামেরা সফলভাবে অ্যাক্সেস হয়েছে!");
+            })
+            .catch(function(err) {
+                console.log(err);
+                alert("ক্যামেরা অ্যাক্সেস ব্যর্থ হয়েছে বা ডিনাই করা হয়েছে।");
+            });
+    </script>
+</body>
+</html>
